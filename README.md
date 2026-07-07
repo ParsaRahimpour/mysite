@@ -1,2 +1,2 @@
 # mysite
-This is my firsy website!
+This is my first website!
