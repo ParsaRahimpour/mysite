@@ -79,6 +79,28 @@
 
     {% endblock %}
 
+
+
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-dismissible fade show position-fixed"
+                role="alert"
+                style="top: 20px; right: 20px; z-index: 9999;">
+
+                {{ message }}
+
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
+
+   
+
     <!-- start footer Area -->
     <footer class="footer-area section-gap">
         <div class="container">

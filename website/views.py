@@ -14,14 +14,15 @@ def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()
+            contact = form.save(commit=False)
+            contact.name = 'anonymous'
+            contact.save()
             messages.add_message(request, messages.SUCCESS, 'Your ticket submited successfully')
         else:
             messages.add_message(request, messages.ERROR, 'Your ticket did not submited')
 
-
-    form = ContactForm()        
-    return render(request, 'website/contact.html', {'form':form})
+    form = ContactForm()
+    return render(request, 'website/contact.html', {'form': form})
 
 
 def newsletter_view(request):
