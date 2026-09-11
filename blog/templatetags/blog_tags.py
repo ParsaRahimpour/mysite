@@ -37,6 +37,6 @@ def latest_posts():
     posts = Post.objects.filter(
         status=1,
         published_date__lte=timezone.now()
-    ).order_by('published_date')[:6]
+    ).order_by('-published_date')[:6]
 
     return {'posts': posts}    
