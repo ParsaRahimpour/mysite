@@ -16,6 +16,8 @@ def contact_view(request):
         if form.is_valid():
             contact = form.save(commit=False)
             contact.name = 'anonymous'
+            if not contact.subject:
+                contact.subject = None
             contact.save()
             messages.add_message(request, messages.SUCCESS, 'Your ticket submited successfully')
         else:
@@ -30,7 +32,10 @@ def newsletter_view(request):
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            messages.add_message(request, messages.SUCCESS, 'You subscribed successfully')
+        else:
+            messages.add_message(request, messages.ERROR, 'Your email is not valid')
+        return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')
 
