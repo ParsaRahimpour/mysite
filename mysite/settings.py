@@ -40,13 +40,25 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.sitemaps',
+    'debug_toolbar',
+    'robots',
+    'taggit',
     'django_extensions',
+    'django_summernote',
     'website.apps.WebsiteConfig',
     'blog'
 ]
 
+# sites framework
 SITE_ID = 2
 
+# summernote configs
+SUMMERNOTE_THEME = 'bs4'
+
+
+# robots
+ROBOTS_USE_HOST = True
+ROBOTS_USE_SITEMAP = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -132,3 +145,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
+
+# INTERNAL_IPS = [
+#     "127.0.0.1",
+# ]
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
