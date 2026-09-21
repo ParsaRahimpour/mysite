@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import *
 from website.models import Contact
 from website.forms import ContactForm, NewsletterForm
 from django.contrib import messages
+
 
 def index_view(request):
     return render(request, 'website/index.html')
@@ -20,6 +21,7 @@ def contact_view(request):
                 contact.subject = None
             contact.save()
             messages.add_message(request, messages.SUCCESS, 'Your ticket submited successfully')
+            return redirect('website:contact')
         else:
             messages.add_message(request, messages.ERROR, 'Your ticket did not submited')
 

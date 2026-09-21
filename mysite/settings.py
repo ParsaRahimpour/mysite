@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'robots',
     'taggit',
+    'captcha',
     'django_extensions',
     'django_summernote',
     'website.apps.WebsiteConfig',
@@ -56,9 +58,15 @@ SITE_ID = 2
 SUMMERNOTE_THEME = 'bs4'
 
 
+
 # robots
 ROBOTS_USE_HOST = True
 ROBOTS_USE_SITEMAP = True
+
+# captcha-admin settings
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -146,8 +154,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "statics",
 ]
 
-# INTERNAL_IPS = [
-#     "127.0.0.1",
-# ]
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
