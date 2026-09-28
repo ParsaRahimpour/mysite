@@ -48,7 +48,9 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_summernote',
     'website.apps.WebsiteConfig',
-    'blog'
+    'blog',
+    'accounts'
+
 ]
 
 # sites framework
